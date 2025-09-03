@@ -4,19 +4,19 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Đăng nhập</title>
+    <title>Đăng ký tài khoản</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <style>
         .login-input { margin-bottom: 15px; }
-        .alert-danger { margin: 20px auto; width: 50%; text-align: center; }
+        .alert { margin: 20px auto; width: 50%; text-align: center; }
     </style>
 </head>
 <body>
     <div class="container">
-        <form action="login" method="post">
-            <h2>Đăng nhập tài khoản</h2>
+        <form action="register" method="post">
+            <h2>Tạo tài khoản mới</h2>
             <c:if test="${alert != null}">
-                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                <div class="alert ${alertType} alert-dismissible fade show" role="alert">
                     ${alert}
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
@@ -39,13 +39,32 @@
                     </div>
                 </label>
             </section>
-            <div class="form-check">
-                <input type="checkbox" class="form-check-input" name="remember" id="remember">
-                <label class="form-check-label" for="remember">Ghi nhớ đăng nhập</label>
-            </div>
-            <button type="submit" class="btn btn-primary">Đăng nhập</button>
-            <a href="${pageContext.request.contextPath}/register" class="btn btn-success ml-2">Đăng ký</a>
-            <a href="${pageContext.request.contextPath}/forgetpassword" class="btn btn-link">Quên mật khẩu?</a>
+            <section>
+                <label class="input login-input">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
+                        <input type="email" placeholder="Email" name="email" class="form-control" required>
+                    </div>
+                </label>
+            </section>
+            <section>
+                <label class="input login-input">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                        <input type="text" placeholder="Họ và tên" name="fullname" class="form-control" required>
+                    </div>
+                </label>
+            </section>
+            <section>
+                <label class="input login-input">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="fa fa-phone"></i></span>
+                        <input type="text" placeholder="Số điện thoại" name="phone" class="form-control">
+                    </div>
+                </label>
+            </section>
+            <button type="submit" class="btn btn-primary">Đăng ký</button>
+            <a href="${pageContext.request.contextPath}/login" class="btn btn-link">Đã có tài khoản? Đăng nhập</a>
         </form>
     </div>
 
